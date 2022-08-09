@@ -25,7 +25,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
             backgroundColor: Colors.white,
             appBar: AppBar(
               toolbarHeight: 30,
-              backgroundColor: Color(0xFFffffff),
+              backgroundColor: const Color(0xFFffffff),
               elevation: 0.0,
             ),
           body:Container(
@@ -43,12 +43,12 @@ class _DetailBookPageState extends State<DetailBookPage> {
                           constraints: BoxConstraints(),
                           icon:
 
-                      Icon(Icons.arrow_back_ios, color:Color(0xFF363f93)),
+                      const Icon(Icons.arrow_back_ios, color:Color(0xFF363f93)),
                           onPressed:()=>Navigator.pop(context))
                     ],
                   ),
                 ),
-                SizedBox(height: 15,),
+                const SizedBox(height: 15,),
                 Container(
                   child: Row(
                     children: [
@@ -69,7 +69,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
                             ],
                             image: DecorationImage(
                               image: NetworkImage(
-                                "http://mark.dbestech.com/uploads/"+this.widget.articleInfo.img
+                                "http://mark.dbestech.com/uploads/${widget.articleInfo.img}"
                               ),
                               fit:BoxFit.fill
                             )
@@ -83,20 +83,20 @@ class _DetailBookPageState extends State<DetailBookPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 10,),
-                            TextWidget(text:this.widget.articleInfo.title, fontSize: 30,),
+                            const SizedBox(height: 10,),
+                            TextWidget(text:widget.articleInfo.title, fontSize: 30,),
                             TextWidget(text:"Author: Dylan Ahmed", fontSize: 20,color:Color(0xFF7b8ea3)),
-                            Divider(color:Colors.grey),
-                            TextWidget(text:this.widget.articleInfo.title, fontSize: 16,color:Color(0xFF7b8ea3)),
+                            const Divider(color:Colors.grey),
+                            TextWidget(text:widget.articleInfo.title, fontSize: 16,color:Color(0xFF7b8ea3)),
                           ],
                         ),
                       )
                     ],
                   ),
                 ),
-                SizedBox(height: 40,),
-                Divider(color:Color(0xFF7b8ea3)),
-                SizedBox(height: 10,),
+                const SizedBox(height: 40,),
+                const Divider(color:Color(0xFF7b8ea3)),
+                const SizedBox(height: 10,),
 
                 Container(
                   padding: const EdgeInsets.only(right: 20),
@@ -106,43 +106,43 @@ class _DetailBookPageState extends State<DetailBookPage> {
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(Icons.favorite, color:Color(0xFF7b8ea3), size: 40,),
-                          SizedBox(width: 10,),
+                          const Icon(Icons.favorite, color:Color(0xFF7b8ea3), size: 40,),
+                          const SizedBox(width: 10,),
                           TextWidget(text:"Like", fontSize: 20),
                         ],
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(Icons.share, color:Color(0xFF7b8ea3), size: 40,),
-                          SizedBox(width: 10,),
+                          const Icon(Icons.share, color:Color(0xFF7b8ea3), size: 40,),
+                          const SizedBox(width: 10,),
                           TextWidget(text:"Share", fontSize: 20),
                         ],
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Icon(Icons.bookmarks_sharp, color:Color(0xFF7b8ea3), size: 40,),
-                          SizedBox(width: 10,),
-                          TextWidget(text:"Bookself", fontSize: 20),
+                          const Icon(Icons.bookmarks_sharp, color:Color(0xFF7b8ea3), size: 40,),
+                          const SizedBox(width: 10,),
+                          TextWidget(text:"Bookshelf", fontSize: 20),
                         ],
                       )
                     ],
                   ),
                 ),
-                SizedBox(height: 40,),
+                const SizedBox(height: 40,),
                 Row(
                   children: [
                     TextWidget(text:"Details", fontSize: 30,),
                     Expanded(child: Container())
                   ],
                 ),
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 Container(
                   height: 200,
-                  child: TextWidget(text:this.widget.articleInfo.article_content, fontSize: 16, color: Colors.grey),
+                  child: TextWidget(text:widget.articleInfo.article_content, fontSize: 16, color: Colors.grey),
                 ),
-                Divider(color:Color(0xFF7b8ea3)),
+                const Divider(color:Color(0xFF7b8ea3)),
                 GestureDetector(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>AllBooks()));
@@ -154,14 +154,13 @@ class _DetailBookPageState extends State<DetailBookPage> {
                     children: [
                       TextWidget(text:"Check the directory", fontSize: 20,),
                       Expanded(child: Container()),
-                      IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: null)
+                      const IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: null)
                     ],
                   ),
 
                 ),
                 ),
-                Divider(color:Color(0xFF7b8ea3)),
-
+                const Divider(color:Color(0xFF7b8ea3)),
               ],
             ),
           )

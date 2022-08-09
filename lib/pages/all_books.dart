@@ -68,12 +68,12 @@ class _AllBooksState extends State<AllBooks> {
                 IconButton(
                     padding: EdgeInsets.zero,
                     constraints: BoxConstraints(),
-                    icon: Icon(Icons.arrow_back_ios, color: Color(0xFF363f93)),
+                    icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF363f93)),
                     onPressed: () => Navigator.pop(context)),
                 IconButton(
                     padding: EdgeInsets.zero,
                     constraints: BoxConstraints(),
-                    icon: Icon(Icons.home_outlined, color: Color(0xFF363f93)),
+                    icon: const Icon(Icons.home_outlined, color: Color(0xFF363f93)),
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -81,7 +81,7 @@ class _AllBooksState extends State<AllBooks> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Expanded(
@@ -107,9 +107,9 @@ class _AllBooksState extends State<AllBooks> {
                                   children: [
                                     Positioned(
                                         top: 35,
-                                        child: new Material(
+                                        child: Material(
                                             elevation: 0.0,
-                                            child: new Container(
+                                            child: Container(
                                               height: 180.0,
                                               width: width * 0.9,
                                               decoration: BoxDecoration(
@@ -117,11 +117,11 @@ class _AllBooksState extends State<AllBooks> {
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
                                                 boxShadow: [
-                                                  new BoxShadow(
+                                                  BoxShadow(
                                                       color: Colors.grey
                                                           .withOpacity(0.3),
                                                       offset:
-                                                          new Offset(0.0, 0.0),
+                                                          const Offset(0.0, 0.0),
                                                       blurRadius: 20.0,
                                                       spreadRadius: 4.0)
                                                 ],
@@ -149,8 +149,7 @@ class _AllBooksState extends State<AllBooks> {
                                                   image: DecorationImage(
                                                     fit: BoxFit.fill,
                                                     image: NetworkImage(
-                                                        "http://mark.dbestech.com/uploads/" +
-                                                            article.img),
+                                                        "http://mark.dbestech.com/uploads/${article.img}"),
                                                   ),
                                                 )))),
                                     Positioned(
@@ -170,7 +169,7 @@ class _AllBooksState extends State<AllBooks> {
                                                 TextWidget(
                                                     text: "Author: Mike Ahmed",
                                                     fontSize: 16),
-                                                Divider(color: Colors.black),
+                                                const Divider(color: Colors.black),
                                                 TextWidget(
                                                     text: article.description,
                                                     fontSize: 16,
