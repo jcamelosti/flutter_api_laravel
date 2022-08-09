@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:convert' as convert;
 import 'package:appapi/api/my_api.dart';
 import 'package:appapi/models/get_article_info.dart';
 import 'package:flutter/material.dart';
@@ -37,13 +38,16 @@ class _ArticlePageState extends State<ArticlePage> {
     await _initData();
   }
   _initData() async {
-   await CallApi().getPublicData("recommendedarticles").then((response){
+   await CallApi().getPublicData("welcomeinfo").then((response){
       setState(() {
-        Iterable list = json.decode(response.body);
-        articles= list.map((model)=>ArticleInfo.fromJson(model)).toList();
+        /*Iterable list = json.decode(response.body);
+        articles= list.map((model)=>ArticleInfo.fromJson(model)).toList();*/
+        String json = utf8.decode(response.bodyBytes);
+        print(json);
+        articles = ArticleInfo.fromJson(convert.json.decode(json)) as List<ArticleInfo>;
       });
     });
-   await CallApi().getPublicData("allarticles").then((response){
+   await CallApi().getPublicData("welcomeinfo").then((response){
      setState(() {
        Iterable list = json.decode(response.body);
        allarticles= list.map((model)=>ArticleInfo.fromJson(model)).toList();
@@ -60,7 +64,7 @@ class _ArticlePageState extends State<ArticlePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 30,
-        backgroundColor: Color(0xFFffffff),
+        backgroundColor: const Color(0xFFffffff),
         elevation: 0.0,
       ),
       body: Column(

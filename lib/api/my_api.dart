@@ -11,37 +11,62 @@ class CallApi{
   }
 
   postData(data, apiUrl) async {
-    var fullUrl = _url + apiUrl + await _getToken();
+    var fullUrl = _url + apiUrl;
     return await http.post(
         Uri.parse(fullUrl),
         body: jsonEncode(data),
-        headers: _setHeaders()
+        headers: await _headers()
     );
   }
   getData(apiUrl) async {
-    var fullUrl = _url + apiUrl + await _getToken() ;
+    var fullUrl = _url + apiUrl ;
     return await http.get(
         Uri.parse(fullUrl),
-        headers: _setHeaders()
+        headers: await _headers()
     );
   }
 
-  _setHeaders() => {
+  /*_setHeaders() async => {
     'Content-type' : 'application/json',
     'Accept' : 'application/json',
-  };
+    'Authorization': 'Bearer ${await _getTokenBearer()}'
+  };*/
 
-  _getToken() async {
+  Future<Map<String, String>> _headers() async {
+    final token = await _getTokenBearer();
+
+    Map<String, String> headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": "Bearer $token"
+    };
+
+    return headers;
+  }
+
+  /*_getToken() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     var token = localStorage.getString('token');
     return '?token=$token';
-  }
+  }*/
 
+  _getTokenBearer() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    var token = localStorage.getString('token');
+    return token;
+  }
 
   getArticles(apiUrl) async {
 
   }
-  getPublicData(apiUrl) async {
 
+  getPublicData(apiUrl) async {
+    var fullUrl = _url + apiUrl ;
+    final headers = await _headers();
+    print(fullUrl);
+    return await http.get(
+        Uri.parse(fullUrl),
+        headers: headers,
+    );
   }
 }
