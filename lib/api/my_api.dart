@@ -63,7 +63,7 @@ class CallApi{
   getPublicData(apiUrl) async {
     var fullUrl = _url + apiUrl ;
     final headers = await _headers();
-    print(fullUrl);
+
     return await http.get(
         Uri.parse(fullUrl),
         headers: headers,

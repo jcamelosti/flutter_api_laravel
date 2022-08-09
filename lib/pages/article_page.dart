@@ -23,7 +23,7 @@ class _ArticlePageState extends State<ArticlePage> {
     _getArticles();
     super.initState();
   }
-  
+
   _getArticles() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     var user = localStorage.getString("user");
@@ -37,30 +37,39 @@ class _ArticlePageState extends State<ArticlePage> {
     }*/
     await _initData();
   }
+
   _initData() async {
-   await CallApi().getPublicData("welcomeinfo").then((response){
+    /*await CallApi().getPublicData("welcomeinfo").then((response) {
       setState(() {
         /*Iterable list = json.decode(response.body);
         articles= list.map((model)=>ArticleInfo.fromJson(model)).toList();*/
         String json = utf8.decode(response.bodyBytes);
-        print(json);
-        articles = ArticleInfo.fromJson(convert.json.decode(json)) as List<ArticleInfo>;
+        articles = ArticleInfo.fromJson(convert.json.decode(json))
+            as List<ArticleInfo>;
+        print(articles.toString());
       });
     });
-   await CallApi().getPublicData("welcomeinfo").then((response){
-     setState(() {
-       Iterable list = json.decode(response.body);
-       allarticles= list.map((model)=>ArticleInfo.fromJson(model)).toList();
-     });
-   });
 
+    await CallApi().getPublicData("welcomeinfo").then((response) {
+      setState(() {
+        Iterable list = json.decode(response.body);
+        allarticles = list.map((model) => ArticleInfo.fromJson(model)).toList();
+      });
+    });*/
+
+    await CallApi().getPublicData("welcomeinfo").then((response) {
+      String json = utf8.decode(response.bodyBytes);
+      //articles = ArticleInfo.fromJson(convert.json.decode(json)) as List<ArticleInfo>;
+      articles = convert.json.decode(json).map((model) => ArticleInfo.fromJson(model)).toList();
+      debugPrint(articles.toString());
+    });
   }
+
   @override
   Widget build(BuildContext context) {
-    final double height=MediaQuery.of(context).size.height;
-    final double width=MediaQuery.of(context).size.width;
-    debugPrint(height.toString());
-    return  Scaffold(
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 30,
@@ -68,8 +77,8 @@ class _ArticlePageState extends State<ArticlePage> {
         elevation: 0.0,
       ),
       body: Column(
-        children: [
-
+        children: const [
+          Text("oi"),
         ],
       ),
     );
