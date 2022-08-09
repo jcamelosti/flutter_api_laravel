@@ -6,28 +6,36 @@ class TextWidget extends StatelessWidget {
   bool isUnderLine;
   final Color color;
 
-  TextWidget({required this.text, required this.fontSize, this.isUnderLine=false,
-      this.color=const Color(0xFF363f93), Key? key}) : super(key: key);
+  TextWidget(
+      {required this.text,
+      required this.fontSize,
+      this.isUnderLine = false,
+      this.color = const Color(0xFF363f93),
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         bottom: 3, // space between underline and text
       ),
       decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(
-            color: isUnderLine?Color(0xFF363f93):Color(0xFFffffff),  // Text colour here
-            width: 1.0, // Underline width
-          ))
+          border: Border(
+              bottom: BorderSide(
+        color: isUnderLine ? const Color(0xFF363f93) : const Color(0xFFffffff),
+        // Text colour here
+        width: 1.0, // Underline width
+      ))),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: fontSize.toDouble(),
+          fontFamily: "Avenir",
+          fontWeight: FontWeight.w900,
+          color: color,
+        ),
       ),
-
-      child: Text(this.text, style: TextStyle(
-        fontSize:this.fontSize.toDouble(),fontFamily: "Avenir",
-        fontWeight: FontWeight.w900,
-        color:this.color,
-
-      ),),
     );
   }
 }

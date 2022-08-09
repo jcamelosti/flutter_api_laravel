@@ -20,7 +20,7 @@ class TextInput extends StatelessWidget {
       decoration: InputDecoration(
 
         hintText: this.textString,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
             color: Color(0xFF9b9b9b),
             fontSize: 15,
             fontWeight: FontWeight.normal),

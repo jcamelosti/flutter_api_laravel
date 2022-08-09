@@ -46,11 +46,11 @@ class _SignInState extends State<SignIn> {
 
     var res = await CallApi().postData(data, 'login');
     var body = json.decode(res.body);
-    print(body);
+    // print(body);
     if (body['success']) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.setString('token', body['token']);
-      localStorage.setString('user', json.encode(body['user']));
+      localStorage.setString('token', body['data']['token']);
+      localStorage.setString('user', json.encode(body['data']['name']));
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const ArticlePage()));
     } else {
@@ -78,7 +78,7 @@ class _SignInState extends State<SignIn> {
                       IconButton(
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
-                          icon: Icon(Icons.arrow_back_ios,
+                          icon: const Icon(Icons.arrow_back_ios,
                               color: Color(0xFF363f93)),
                           onPressed: () =>
                               Navigator.of(context, rootNavigator: true)
@@ -117,11 +117,11 @@ class _SignInState extends State<SignIn> {
                         child: Container(
                           height: 80,
                           width: 80,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color(0xFF363f93),
                           ),
-                          child: Icon(Icons.arrow_forward,
+                          child: const Icon(Icons.arrow_forward,
                               color: Colors.white, size: 30),
                         ))
                   ],
@@ -173,14 +173,14 @@ class TextInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: TextStyle(color: Color(0xFF000000)),
+      style: TextStyle(color: const Color(0xFF000000)),
       cursorColor: Color(0xFF9b9b9b),
       controller: textController,
       keyboardType: TextInputType.text,
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: this.textString,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
             color: Color(0xFF9b9b9b),
             fontSize: 15,
             fontWeight: FontWeight.normal),

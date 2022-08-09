@@ -75,7 +75,7 @@ class _WelcomePageState extends State<WelcomePage> {
           children: [
             Container(
               height: MediaQuery.of(context).size.height / 2,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("img/background.png"),
                       fit: BoxFit.fill)),
@@ -98,7 +98,7 @@ class _WelcomePageState extends State<WelcomePage> {
             ]),
             Container(
               height: 180,
-              color: Color(0xFF333d94),
+              color: const Color(0xFF333d94),
               child: PageView.builder(
                   onPageChanged: _onPageChanged,
                   controller: PageController(viewportFraction: 1.0),
@@ -146,7 +146,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
+                              children: const <Widget>[
                                 Text(
                                   'Get Started',
                                   style: TextStyle(
