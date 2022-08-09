@@ -5,8 +5,6 @@ import 'package:appapi/models/get_article_info.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'detail_book.dart';
-
 class ArticlePage extends StatefulWidget {
   const ArticlePage({Key? key}) : super(key: key);
 
@@ -15,8 +13,9 @@ class ArticlePage extends StatefulWidget {
 }
 
 class _ArticlePageState extends State<ArticlePage> {
-  var articles = <ArticleInfo>[];
-  var allarticles = <ArticleInfo>[];
+  //var articles = <ArticleInfo>[];
+  //var allarticles = <ArticleInfo>[];
+  late List<ArticleInfo> articles;
 
   @override
   void initState() {
@@ -58,10 +57,9 @@ class _ArticlePageState extends State<ArticlePage> {
     });*/
 
     await CallApi().getPublicData("welcomeinfo").then((response) {
-      String json = utf8.decode(response.bodyBytes);
-      //articles = ArticleInfo.fromJson(convert.json.decode(json)) as List<ArticleInfo>;
-      articles = convert.json.decode(json).map((model) => ArticleInfo.fromJson(model)).toList();
-      debugPrint(articles.toString());
+      Iterable l = json.decode(response.body);
+      articles = List<ArticleInfo>.from(l.map((model)=> ArticleInfo.fromJson(model)));
+      debugPrint(articles.length.toString());
     });
   }
 
