@@ -52,7 +52,7 @@ class _SignInState extends State<SignIn> {
       localStorage.setString('token', body['token']);
       localStorage.setString('user', json.encode(body['user']));
       Navigator.push(
-          context, new MaterialPageRoute(builder: (context) => ArticlePage()));
+          context, MaterialPageRoute(builder: (context) => const ArticlePage()));
     } else {
       _showMsg(body['message']);
     }
