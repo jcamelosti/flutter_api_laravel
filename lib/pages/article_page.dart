@@ -15,9 +15,8 @@ class ArticlePage extends StatefulWidget {
 }
 
 class _ArticlePageState extends State<ArticlePage> {
-  //var articles = <ArticleInfo>[];
-  //var allarticles = <ArticleInfo>[];
   late List<ArticleInfo> articles = [];
+  //late List<ArticleInfo> allarticles = [];
 
   @override
   void initState() {
